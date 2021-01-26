@@ -1,5 +1,7 @@
 import os
 import speech_recognition as sr
+import pyttsx3
+
 os.system("tput setaf 3")
 print("                                       Welcome to my menu              ")
 os.system("tput setaf 7")
@@ -18,14 +20,24 @@ with sr.Microphone() as source:
 		print("Acces Denied")	
 		exit()
 
-print("""
+m=("""
 	\n
 	 1:Big Data Hadoop
 	 2:AWS Cloud
 	 3:Machine Learning
 	 4:Docker
 	 5.Python
-	""")		
+	""")
+def speak(message):
+	engine=pyttsx3.init()
+	rate=engine.getProperty('rate')
+	engine.setProperty('rate',rate-50)
+	engine.say('{}'.format(message))
+	engine.runAndWait()
+
+print(m)
+speak(m)
+		
 	
 
 with sr.Microphone() as source:
@@ -34,13 +46,22 @@ with sr.Microphone() as source:
 	print('Done listening')
 ch = r.recognize_google(audio)
 if (("Big " in ch )or ("data" in ch))and (("open" in ch)or("execute"in ch)):
-	print("""
+	b=("""
 		 Open hdfs-site.xml file
 		 Open core-site.xml file
 		 Start namenode
 		 Start datanode
 		 Run jps 
 		""")
+	def speak1(message):
+		engine=pyttsx3.init()
+		rate=engine.getProperty('rate')
+		engine.setProperty('rate',rate-50)
+		engine.say('{}'.format(message))
+		engine.runAndWait()
+
+	print(b)
+	speak(b)
 	with sr.Microphone() as source:	
 		print('what you want me to do')
 		voice=r.listen(source)
@@ -59,7 +80,7 @@ if (("Big " in ch )or ("data" in ch))and (("open" in ch)or("execute"in ch)):
 		else:	
 			os.system("exit()")
 elif (("aws" in ch)or ("cloud" in ch))and (("start" in ch)or("open" in ch)):
-	print("""
+	a=("""
 			configure
       		generate key-pair
       		create security group
@@ -68,6 +89,15 @@ elif (("aws" in ch)or ("cloud" in ch))and (("start" in ch)or("open" in ch)):
       		create a EBS storage
       		create a S3 bucket
       		""")
+	def speak2(message):
+		engine=pyttsx3.init()
+		rate=engine.getProperty('rate')
+		engine.setProperty('rate',rate-50)
+		engine.say('{}'.format(message))
+		engine.runAndWait()
+
+	print(a)
+	speak(a)
 	with sr.Microphone() as source:
 		print("What you want me to do")
 		awaz=r.listen(source)
@@ -92,11 +122,20 @@ elif (("aws" in ch)or ("cloud" in ch))and (("start" in ch)or("open" in ch)):
 		elif(("s3"in aw)or("bucket"in aw))and (("create"in aw)or("open"in aw)):
 			os.system("aws s3 help")
 elif(("machine"in ch)or("learning"in ch))and(("open"in ch)or("start"in ch)):
-	print("""
+	p=("""
 		 Launch jupyter notebook
 		 Install numpy
 		 Install pandas
 		""")
+	def speak3(message):
+		engine=pyttsx3.init()
+		rate=engine.getProperty('rate')
+		engine.setProperty('rate',rate-50)
+		engine.say('{}'.format(message))
+		engine.runAndWait()
+
+	print(p)
+	speak(p)
 	with sr.Microphone() as source:
 		print("What you want to do")
 		audion=r.listen(source)
@@ -109,13 +148,22 @@ elif(("machine"in ch)or("learning"in ch))and(("open"in ch)or("start"in ch)):
 		elif("pandas"in ml)and("install"in ml):
 			os.system("pip3 install pandas")
 elif("docker"in ch)and(("open"in ch)or("start"in ch)):
-	print("""
+	d=("""
 		See running docker containers
 		Run Ubuntu:18.10
 		Run ubuntu:14.04
 		Run ubuntu:20.10
 		Exit		
-		""")			
+		""")
+	def speak(message):
+		engine=pyttsx3.init()
+		rate=engine.getProperty('rate')
+		engine.setProperty('rate',rate-50)
+		engine.say('{}'.format(message))
+		engine.runAndWait()
+
+	print(d)
+	speak(d)			
 	with sr.Microphone() as source:
 		print("What do you want me to do")
 		audio1=r.listen(source)
@@ -130,11 +178,20 @@ elif("docker"in ch)and(("open"in ch)or("start"in ch)):
 		elif(("docker"in dc)or("container"in dc)and(("open"in dc)or("open"in dc))):
 			os.system("docker ps")
 elif(("python"in ch)and("open"in ch)or("start")in ch):
-	print("""
+	py=print("""
 		Check python version
 		Run python interpreter
 		Exit
 		""")
+	def speak4(message):
+		engine=pyttsx3.init()
+		rate=engine.getProperty('rate')
+		engine.setProperty('rate',rate-50)
+		engine.say('{}'.format(message))
+		engine.runAndWait()
+
+	print(py)
+	speak(py)
 	with sr.Microphone() as source:
 		print("What you want me to do")
 		audio2=r.listen(source)
